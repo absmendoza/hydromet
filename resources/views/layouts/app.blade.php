@@ -24,6 +24,9 @@
     <div id="main">
         <!-- START WRAPPER -->
         <div class="wrapper">
+            <!-- comment out code below to disable LOADING PAGE-->
+            @include('includes.loading')
+
             <!-- START LEFT SIDEBAR NAV-->
             @include('includes.sidenav')
             <!-- END LEFT SIDEBAR NAV-->
