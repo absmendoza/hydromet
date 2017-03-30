@@ -13,10 +13,10 @@
 </head>
 
 <body>
-    <!--
+    <!-- uncomment out code below to enable LOADING PAGE
     @include('includes.loading')
     -->
-    
+
     <header id="header" class="page-topbar">
         @include('includes.header')
     </header>
@@ -24,9 +24,6 @@
     <div id="main">
         <!-- START WRAPPER -->
         <div class="wrapper">
-            <!-- comment out code below to disable LOADING PAGE-->
-            @include('includes.loading')
-
             <!-- START LEFT SIDEBAR NAV-->
             @include('includes.sidenav')
             <!-- END LEFT SIDEBAR NAV-->

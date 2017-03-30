@@ -18,3 +18,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+// localhost:8000/maintenanceReps
+Route::get('maintenanceReps', function(){
+	return view('maintenance_reps');
+});
+
+// report mgt
+Route::post('submitReport', array('uses' => 'ReportController@store'));
+Route::get('view_report', function(){
+	$reports = DB::table('reports')->get();
+	return view('view_report');//->with('reports', $reports);
+});
+
+Route::get('display_report', function(){
+	$reports = DB::table('reports')->get();
+});

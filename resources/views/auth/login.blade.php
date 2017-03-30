@@ -32,7 +32,7 @@
 
 </head>
 <body class="white">
-    <!-- uncomment code block below to unable Page Loading -->
+    <!-- uncomment code block below to enable Page Loading 
     <div id="loader-wrapper">
         <div id="loader"></div>        
         <div class="loader-section section-left"></div>
