@@ -36,7 +36,7 @@
         </li>
         <li class="bold"><a class="waves-effect waves-cyan" href="maintenanceReps"><i class="mdi-editor-insert-comment"></i> Maintenance Reports</a>
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan" href="viewUsers"><i class="mdi-action-account-box"></i>Users</a>
+        <li class="bold"><a class="waves-effect waves-cyan" href="userCRUD"><i class="mdi-action-account-box"></i>Users</a>
         </li>
         <li class="li-hover"><div class="divider"></div></li>
         <li class="li-hover"><p class="ultra-small margin more-text">MORE</p></li>

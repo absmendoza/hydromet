@@ -47,3 +47,6 @@ Route::get('/users/serverSide', [
         return Datatables::of($users)->make();
     }
 ]);
+
+// for datatables (inspired by ItemCRUD)
+Route::resource('userCRUD','UserCRUDController');
