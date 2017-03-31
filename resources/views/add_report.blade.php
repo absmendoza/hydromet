@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="dist/material-datetime-picker.css">
-	<script src="dist/material-datetime-picker.js"></script>
 </head>
 
 <body>
@@ -56,7 +54,7 @@
 		<h4 class="header2" style="padding-top:2%">ONSITE VISIT</h4>
 		<div class="form-group">
 	        {!! Form::label('date_visited', 'Date Visited:') !!}
-	        <input type="date" name="date_visited" class="datepicker" value="date_assessed">
+	        <input type="date" name="date_visited" class="datepicker" value="date_visited">
 	    </div>
 	    <div class="form-group">
 	        {!! Form::label('actual_defects', 'Actual Defect/s:') !!}
@@ -105,33 +103,13 @@
         <br><br>
 	</form>
 
-
-<!--	<button class="c-btn c-datepicker-btn">
-			  <span class="material-icon">Click me</span>
-			</button>
-			<pre id="output"></pre>-->
 </div>
 	<script>
 		$(document).ready(function() {
-	    $('select').material_select();
-	});
+	    	$('select').material_select();
+		});
+
 	</script>
-
-  <script src="dist/material-datetime-picker.js" charset="utf-8"></script>
-
-<!--  <script>
-
-    const picker = new MaterialDatePicker({})
-      .on('submit', (d) => {
-        output.innerText = d;
-      });
-
-    const el = document.querySelector('.c-datepicker-btn');
-    el.addEventListener('click', () => {
-      picker.open();
-    }, false);
-
-</script>-->
 
 </body>
 </html>
