@@ -1,5 +1,5 @@
 <?php
-
+use Yajra\Datatables\Datatables;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,3 +34,16 @@ Route::get('view_report', function(){
 Route::get('display_report', function(){
 	$reports = DB::table('reports')->get();
 });
+
+Route::get('viewUsers', function(){
+	return view('view_users');
+});
+
+Route::get('/users/serverSide', [
+    'as'   => 'users.serverSide',
+    'uses' => function () {
+        $users = App\User::select(['id', 'name', 'email', 'created_at']);
+
+        return Datatables::of($users)->make();
+    }
+]);
