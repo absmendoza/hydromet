@@ -6,7 +6,7 @@
     <div id="admin" class="col s12">
         <div class="card material-table">
             <div class="table-header">
-                <h4 class="table-title">Material Datatable</h4>
+                <h4 class="table-title">User CRUD</h4>
                 <div class="actions">
                     <a href="{{ route('userCRUD.create') }}" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons">person_add</i></a>
                     <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
