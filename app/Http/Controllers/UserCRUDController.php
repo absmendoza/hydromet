@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class UserCRUDController extends Controller
 {
@@ -26,7 +28,7 @@ class UserCRUDController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('UserCRUD.create');
     }
 
     /**
@@ -38,9 +40,10 @@ class UserCRUDController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'username' => 'required',
-            'email' => 'required',
+            'name' => 'required|max:255',
+            'username' => 'required|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6',
         ]);
 
         User::create($request->all());
@@ -56,8 +59,8 @@ class UserCRUDController extends Controller
      */
     public function show($id)
     {
-        $users = User::find($id);
-        return view('UserCRUD.show',compact('users'));
+        $user = User::find($id);
+        return view('UserCRUD.show',compact('user'));
     }
 
     /**
@@ -68,8 +71,8 @@ class UserCRUDController extends Controller
      */
     public function edit($id)
     {
-        $users = User::find($id);
-        return view('UserCRUD.edit',compact('users'));
+        $user = User::find($id);
+        return view('UserCRUD.edit',compact('user'));
     }
 
     /**
@@ -104,4 +107,6 @@ class UserCRUDController extends Controller
         return redirect()->route('userCRUD.index')
                         ->with('success','User deleted successfully');
     }
+
+
 }
