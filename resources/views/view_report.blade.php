@@ -24,6 +24,7 @@
  <tbody>
  <?php $reports = DB::table('reports')->get(); ?>
  @foreach ($reports as $report)
+     @if ($report->if_approved == '1')
      <tr>
          <td>{{ $report->id }}</td>
          <td>{{ $report->station_name }}</td>
@@ -34,6 +35,7 @@
         <!-- <td><button id="repBtn" class="waves-effect waves-light btn modal-trigger  light-blue repBtn" onclick="ViewReport('viewReport-<?= $report->id?>')"> View Report </button></td>-->
         <td><a class="waves-effect waves-light btn modal-trigger  light-blue modal-trigger" href="#viewReport-<?= $report->id?>">Modal</a></td>
      </tr>
+     @endif
      <div id="modal-fixed-footer">
     <div id="viewReport-<?= $report->id?>" class="modal modal-fixed-footer">
       <div class="modal-content" align="justify">

@@ -25,6 +25,7 @@ class Report extends Model
     'conducted_by',
     'c_position',
     'noted_by',
-    'n_position'
+    'n_position',
+    'if_approved'
     ];
 }

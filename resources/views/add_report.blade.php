@@ -83,17 +83,18 @@
 
 	    <div class="form-group"  style="padding-top:2%">
 	        {!! Form::label('conducted_by', 'Conducted by:') !!}
-	        <input type="text" name="conducted_by" placeholder="Staff Name"/><br>
+			{!! Form::text('conducted_by', Auth::user()->name,['class'=>'form-control', 'readonly'=>'true']) !!}
 	        {!! Form::label('c_position', 'Position:') !!}
-	        {!! Form::text('c_position', null,['class'=>'form-control']) !!}
+	        {!! Form::text('c_position', 'Position',['class'=>'form-control', 'readonly'=>'true']) !!}
 	    </div>
 
 	    <div class="form-group">
-	        {!! Form::label('noted_by', 'Noted by:') !!}
-	        <input type="text" name="noted_by" placeholder="Unit Head"/><br>
-	        {!! Form::label('n_position', 'Position:') !!}
-	        {!! Form::text('n_position', null,['class'=>'form-control']) !!}
-	    </div>
+	        {!! Form::label('noted_by', 'Noted by:', ['hidden'=>'true']) !!}
+	        <input type="text" name="noted_by" placeholder="Unit Head" value="Unit Head Name" hidden/><br>
+	        {!! Form::label('n_position', 'Position:', ['hidden'=>'true']) !!}
+	        {!! Form::text('n_position', 'Unit Head',['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+			{!! Form::text('if_approved', '0',['class'=>'form-control', 'hidden'=>'true']) !!}
+		</div>
 
 		<div class="input-field col s12">
           <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Submit
