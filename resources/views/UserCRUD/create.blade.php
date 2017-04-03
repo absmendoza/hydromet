@@ -100,8 +100,6 @@
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <a class="btn btn-primary" href="{{ route('userCRUD.index') }}"> Back</a>
                         </div>
-
-                    </div>
                     {!! Form::close() !!}
                 </div>
             </div>
