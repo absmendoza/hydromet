@@ -17,11 +17,7 @@
 </div>
 
 <div id="myReport" class="toggle" style="padding:5%">
-    my
+    @include('my_reports')
 </div>
 
-<div id="viewReport" class="toggle" style=" padding:5%">
-    @include('view_report')
-</div>
-            
 @endsection

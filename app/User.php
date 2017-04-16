@@ -31,4 +31,18 @@ class User extends Authenticatable
     {   
         $this->attributes['password'] = bcrypt($password);
     }
+
+    public function notifications()
+    {
+        return $this->hasMany('Notification');
+    }
+
+    public function newNotification()
+    {
+        $notification = new Notification;
+        $notification->user()->associate($this);
+    
+        return $notification;
+    }
+
 }

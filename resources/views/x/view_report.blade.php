@@ -33,7 +33,7 @@
          <td>{{ $report->date_assessed }}</td>
          <td>{{ $report->conducted_by }}</td>
         <!-- <td><button id="repBtn" class="waves-effect waves-light btn modal-trigger  light-blue repBtn" onclick="ViewReport('viewReport-<?= $report->id?>')"> View Report </button></td>-->
-        <td><a class="waves-effect waves-light btn modal-trigger  light-blue modal-trigger" href="#viewReport-<?= $report->id?>">Modal</a></td>
+        <td><a class="waves-effect waves-light btn modal-trigger  light-blue modal-trigger" href="#viewReport-<?= $report->id?>">View</a></td>
      </tr>
      @endif
      <div id="modal-fixed-footer">
@@ -78,10 +78,7 @@
             $('.modal-trigger').leanModal();
           });
 
-          function ViewReport(id){
-            var modal = document.getElementById(id);
-            modal.style.display = "block";
-          }
+          
     </script>
 
     <script type="text/javascript" src="js/angular.min.js"></script>

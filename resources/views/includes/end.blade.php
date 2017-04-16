@@ -12,3 +12,5 @@
 
 <!--plugins.js - Some Specific JS codes for Plugin Settings-->
 <script type="text/javascript" src="{{ asset('js/plugins.js') }}"></script>
+
+<script src="dist/material-datetime-picker.js"></script>

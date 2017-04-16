@@ -24,15 +24,13 @@ Route::get('maintenanceReps', function(){
 	return view('maintenance_reps');
 });
 
-// report mgt
-Route::post('submitReport', array('uses' => 'ReportController@store'));
-Route::get('view_report', function(){
-	$reports = DB::table('reports')->get();
-	return view('view_report');//->with('reports', $reports);
-});
+Route::resource('reports','ReportController');
+Route::get('addMaintenanceReport', array('uses'=> 'MaintenanceController@addRepView'));
+Route::get('viewMaintenanceReports', array('uses'=> 'MaintenanceController@allRepsView'));
+Route::get('viewMyMaintenanceReports', array('uses'=> 'MaintenanceController@myRepsView'));
 
-Route::get('display_report', function(){
-	$reports = DB::table('reports')->get();
+Route::get('success', function(){
+    return view('Reports/success');
 });
 
 Route::get('viewUsers', function(){

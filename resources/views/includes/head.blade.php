@@ -23,6 +23,9 @@
 <link href="{{ asset('css/dataTable.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
 -->
 
+<!-- Datepicker CSS -->
+<link rel="stylesheet" href="dist/material-datetime-picker.css">
+
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
