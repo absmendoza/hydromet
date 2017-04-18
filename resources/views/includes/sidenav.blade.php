@@ -23,7 +23,7 @@
                             </form>
                         </li>
                     </ul>
-                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"> {{ Auth::user()->name }} <i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"> {{ Auth::user()->firstname }} {{ Auth::user()->lastname }} <i class="mdi-navigation-arrow-drop-down right"></i></a>
                     <p class="user-roal">Administrator</p>
                 </div>
             </div>
@@ -80,53 +80,7 @@
             </li>
                         
         </li>
-        <li>
-            <form class="login-form" role="form" method="POST" action="{{ route('login') }}">
-            {{ csrf_field() }}
-                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                    <div class="input-field col s12">
-                        <i class="mdi-social-person-outline prefix"></i>
-                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-                        <label for="email" class="center-align">E-Mail Address</label>
-                        @if ($errors->has('email'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                    <label for="password">Password</label>
-                    <div class="input-field col s12">
-                        <i class="mdi-action-lock-outline prefix"></i>
-                        <input id="password" type="password" class="form-control" name="password" required>
-                        @if ($errors->has('password'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="row">          
-                    <div class="input-field col s12 m12 l12  login-text">
-                        <input type="checkbox" id="remember-me" />
-                        <label>
-                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                        </label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <a href="/" class="btn waves-effect waves-light col s12">Login</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6 m6 l6">
-                        <p class="margin right-align medium-small"><a href="{{ route('password.request') }}">Forgot password ?</a></p>
-                    </div>          
-                </div>
-            </form>
-        </li>
+        
         @endif
     </ul>
     @endif

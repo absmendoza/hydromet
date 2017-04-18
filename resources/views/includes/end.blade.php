@@ -25,5 +25,12 @@ Scripts
 <script>
 $(document).ready(function() {
     $('#datatable').DataTable();
-} );
+
+    $('#change_pw').hide();
+    $('#pw_btn').on('click', function (event) {
+        $('#pw_btn').hide();
+        $('#change_pw').show();
+    });
+    
+});
 </script>

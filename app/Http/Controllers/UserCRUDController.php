@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -16,9 +17,8 @@ class UserCRUDController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::orderBy('id','DESC')->paginate(5);
-        return view('UserCRUD.index',compact('users'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+        $users = User::all();
+        return view('UserCRUD.index',compact('users'));
     }
 
     /**
@@ -40,17 +40,17 @@ class UserCRUDController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:255',
+            'firstname' => 'required|max:255',
+            'lastname' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6',
             'contact_num',
-            'position',
             'employee_id',
         ]);
 
         User::create($request->all());
         return redirect()->route('userCRUD.index')
-                        ->with('success','User created successfully');
+                         ->with('success','User created successfully');
     }
 
     /**
@@ -87,18 +87,30 @@ class UserCRUDController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required',
             'email' => 'required',
             'contact_num',
             'employee_id',
             'position'
         ]);
 
+        $user = User::where('email', $request['email'])->first();
+        
+        $user->roles()->detach();
+        if ($request['role_user']) {
+            $user->roles()->attach(Role::where('name', 'User')->first());
+        }
+        if ($request['role_head']) {
+            $user->roles()->attach(Role::where('name', 'Head')->first());
+        }
+        if ($request['role_admin']) {
+            $user->roles()->attach(Role::where('name', 'Admin')->first());
+        }
+
         User::find($id)->update($request->all());
         return redirect()->route('userCRUD.index')
                         ->with('success','User updated successfully');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *

@@ -23,24 +23,20 @@
             <table id="datatable">
                 <thead>
                     <tr>
-                        <th>Name</th>
                         <th>Employee ID</th>
-                        <th>position</th>
+                        <th>Name</th>
+                        <th>Position</th>
                         <th>Email</th>
-                        <th>Contact #</th>
-                        <th>Created at</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($users as $key => $user)
                     <tr>
-                        <td>{{ $user->name }}</td>
                         <td>{{ $user->employee_id }}</td>
+                        <td>{{ $user->firstname }} {{ $user->lastname }}</td>
                         <td>{{ $user->position }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->contact_num }}</td>
-                        <td>{{ $user->created_at }}</td>
                         <td>
                         <a href="{{ route('userCRUD.show',$user->id) }}" class="waves-effect btn"><i class="material-icons">info_outline</i></a>
                         <a href="{{ route('userCRUD.edit',$user->id) }}" class="waves-effect btn"><i class="material-icons">edit</i></a>
@@ -58,6 +54,5 @@
     </div>
 </div>
 
-    {!! $users->render() !!}
 
 @endsection
