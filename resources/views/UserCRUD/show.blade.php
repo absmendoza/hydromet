@@ -24,8 +24,15 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Username:</strong>
-                {{ $user->username }}
+                <strong>Employee ID:</strong>
+                {{ $user->employee_id }}
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Position:</strong>
+                {{ $user->position }}
             </div>
         </div>
 
@@ -33,6 +40,13 @@
             <div class="form-group">
                 <strong>Email:</strong>
                 {{ $user->email }}
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Contact #:</strong>
+                {{ $user->contact_num }}
             </div>
         </div>
     </div>

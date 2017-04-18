@@ -41,9 +41,11 @@ class UserCRUDController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'username' => 'required|max:255|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6',
+            'contact_num',
+            'position',
+            'employee_id',
         ]);
 
         User::create($request->all());
@@ -86,8 +88,10 @@ class UserCRUDController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'username' => 'required',
             'email' => 'required',
+            'contact_num',
+            'employee_id',
+            'position'
         ]);
 
         User::find($id)->update($request->all());

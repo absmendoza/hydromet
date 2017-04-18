@@ -1,14 +1,14 @@
-@extends('layouts.default')
+@extends('layouts.app')
  
 @section('content')
 
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit New Item</h2>
+                <h2>Edit User</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('itemCRUD.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('userCRUD.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -24,20 +24,41 @@
         </div>
     @endif
 
-    {!! Form::model($item, ['method' => 'PATCH','route' => ['itemCRUD.update', $item->id]]) !!}
+    {!! Form::model($user, ['method' => 'PATCH','route' => ['userCRUD.update', $user->id]]) !!}
     <div class="row">
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Title:</strong>
-                {!! Form::text('title', null, array('placeholder' => 'Title','class' => 'form-control')) !!}
+                <strong>Name:</strong>
+                {!! Form::text('name', $user->name, array('placeholder' => 'name','class' => 'form-control')) !!}
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Description:</strong>
-                {!! Form::textarea('description', null, array('placeholder' => 'Description','class' => 'form-control','style'=>'height:100px')) !!}
+                <strong>Employee ID:</strong>
+                {!! Form::text('employee_id', $user->employee_id, array('placeholder' => 'Employee ID','class' => 'form-control')) !!}
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Position:</strong>
+                {!! Form::text('position', $user->position, array('placeholder' => 'Position','class' => 'form-control')) !!}
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>E-mail:</strong>
+                {!! Form::text('email', $user->email, array('placeholder' => 'E-mail','class' => 'form-control')) !!}
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Contact Number:</strong>
+                {!! Form::text('contact_num', $user->contact_num, array('placeholder' => 'Contact #','class' => 'form-control')) !!}
             </div>
         </div>
 

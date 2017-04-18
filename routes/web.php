@@ -40,11 +40,10 @@ Route::get('viewUsers', function(){
 Route::get('/users/serverSide', [
     'as'   => 'users.serverSide',
     'uses' => function () {
-        $users = App\User::select(['id', 'name', 'email', 'created_at']);
+        $users = App\User::select(['id', 'name', 'employee_id', 'position', 'email', 'contact_num', 'created_at']);
 
         return Datatables::of($users)->make();
     }
 ]);
 
-// for datatables (inspired by ItemCRUD)
 Route::resource('userCRUD','UserCRUDController');

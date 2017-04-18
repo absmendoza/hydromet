@@ -19,13 +19,12 @@
 <link href="{{ asset('css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
 <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
 
-<!-- Data Table CSS 
-<link href="{{ asset('css/dataTable.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
--->
+<!-- Datatables -->
+<link href="{{ asset('css/datatable.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
 
-<!-- Datepicker CSS -->
-<link rel="stylesheet" href="dist/material-datetime-picker.css">
+<!-- INCLUDED PLUGIN CSS ON THIS PAGE -->    
+<link href="{{ asset('js/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="{{ asset('js/plugins/jvectormap/jquery-jvectormap.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
+<link href="{{ asset('js/plugins/chartist-js/chartist.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
 
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" type="text/css" rel="stylesheet" media="screen,projection">
