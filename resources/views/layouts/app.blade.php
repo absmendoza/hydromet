@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <!-- uncomment out code below to enable LOADING PAGE
+    <!-- Uncomment below to put loading chorva
     @include('includes.loading')
     -->
 
@@ -27,11 +27,10 @@
             <!-- START LEFT SIDEBAR NAV-->
             @include('includes.sidenav')
             <!-- END LEFT SIDEBAR NAV-->
-            
+
             <!-- main activity goes here -->
             @yield('content')
             <!-- main activity ends here -->
-                
         </div>
         <!-- END WRAPPER -->
 
@@ -40,12 +39,6 @@
     <footer class="page-footer">
         @include('includes.footer')
     </footer>
-    <script type="text/javascript">
-$(document).ready(function() {
-  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-  $('.modal-trigger').leanModal();
-});
-</script>
 
     <!-- scripts -->
     @include('includes.end')

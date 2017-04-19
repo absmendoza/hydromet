@@ -181,7 +181,6 @@
 })(window, document);
 
 $(document).ready(function() {
-    
   $('#datatable').dataTable({
     "oLanguage": {
       "sStripClasses": "",
@@ -197,6 +196,7 @@ $(document).ready(function() {
         '<option value="-1">All</option>' +
         '</select></div>'
     },
-    bAutoWidth: false
+    fixedColumns: true,
+    bAutoWidth: true
   });
 });

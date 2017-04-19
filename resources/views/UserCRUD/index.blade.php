@@ -2,11 +2,12 @@
  
 @section('content')
 
+
 <div class="row">
     <div id="admin" class="col s12">
         <div class="card material-table">
             <div class="table-header">
-                <h4 class="table-title">User CRUD</h4>
+            <span class="table-title">User CRUD</span>
                 <div class="actions">
                     <a href="{{ route('userCRUD.create') }}" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons">person_add</i></a>
                     <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
@@ -22,22 +23,20 @@
             <table id="datatable">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>Employee ID</th>
                         <th>Name</th>
-                        <th>Username</th>
+                        <th>Position</th>
                         <th>Email</th>
-                        <th>Created at</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($users as $key => $user)
                     <tr>
-                        <td>{{ ++$i }}</td>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->username }}</td>
+                        <td>{{ $user->employee_id }}</td>
+                        <td>{{ $user->firstname }} {{ $user->lastname }}</td>
+                        <td>{{ $user->position }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->created_at }}</td>
                         <td>
                         <a href="{{ route('userCRUD.show',$user->id) }}" class="waves-effect btn"><i class="material-icons">info_outline</i></a>
                         <a href="{{ route('userCRUD.edit',$user->id) }}" class="waves-effect btn"><i class="material-icons">edit</i></a>
@@ -55,6 +54,5 @@
     </div>
 </div>
 
-    {!! $users->render() !!}
 
 @endsection

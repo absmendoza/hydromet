@@ -9,36 +9,12 @@
 ================================================================================ -->
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
-    <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Favicons-->
-    <link rel="icon" href="{{ asset('images/favicon/icon-32x32.png') }}" sizes="32x32">
-    <!-- Favicons-->
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('images/favicon/icon-152x152.png') }}">
-    <!-- For iPhone -->
-    <meta name="msapplication-TileColor" content="#00bcd4">
-    <meta name="msapplication-TileImage" content="{{ asset('images/favicon/mstile-144x144.png') }}">
-    <!-- For Windows Phone -->
-
-    <!-- CORE CSS-->    
-    <link href="{{ asset('css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
-    <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
-
+	@include('includes.head')
 </head>
 <body class="white">
-    <!-- uncomment code block below to enable Page Loading 
-    <div id="loader-wrapper">
-        <div id="loader"></div>        
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
-    </div>
-    <!-- End Page Loading -->
+    <!-- 
+	@include('includes.loading')
+     -->
 
     <center>
     <div class="white loaded" style="width: 301px; padding: 25px 0">
@@ -59,7 +35,7 @@
                                     <div class="input-field col s12">
                                         <i class="mdi-social-person-outline prefix"></i>
                                         <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                        <input id="email" type="email" class="form-control" name="email" required autofocus>
 
                                         @if ($errors->has('email'))
                                             <span class="help-block">
@@ -112,17 +88,7 @@
         </div>
     </div>
     </center>
-
-    <!-- ================================================
-    Scripts
-    ================================================ -->
     
-    <!-- jQuery Library -->
-    <script type="text/javascript" src="{{ asset('js/jquery-1.11.2.min.js') }}"></script>    
-    <!--materialize js-->
-    <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
-       
-     <!--plugins.js - Some Specific JS codes for Plugin Settings (loading page)-->
-    <script type="text/javascript" src="{{ asset('js/plugins.js') }}"></script>
+    @include('includes.end')
 </body>
 </html>

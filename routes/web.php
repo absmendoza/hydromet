@@ -12,15 +12,17 @@ use Yajra\Datatables\Datatables;
 */
 
 Route::get('/', function () {
+<<<<<<< HEAD
    
 
 
     return view('welcome');//->with('notifs', $notifs);
+=======
+    return view('index');
+>>>>>>> e15c1cab7200cc1589a8bd7c0c8758163864ad17
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index');
 
 // localhost:8000/maintenanceReps
 Route::get('maintenanceReps', function(){
@@ -46,18 +48,74 @@ Route::get('success', function(){
     return view('Reports/success');
 });
 
-Route::get('viewUsers', function(){
-	return view('view_users');
-});
-
 Route::get('/users/serverSide', [
     'as'   => 'users.serverSide',
     'uses' => function () {
-        $users = App\User::select(['id', 'name', 'email', 'created_at']);
+        $users = App\User::select(['id', 'name', 'employee_id', 'position', 'email', 'contact_num', 'created_at']);
 
         return Datatables::of($users)->make();
     }
 ]);
 
-// for datatables (inspired by ItemCRUD)
-Route::resource('userCRUD','UserCRUDController');
+//Route::resource('userCRUD','UserCRUDController');
+
+/*
+Route::group(['middleware' => 'roles'], function() {
+    Route::resource('/userCRUD', 'UserCRUDController', 
+        [
+		'roles' => 'Visitor'
+        ]);
+});
+*/
+
+Route::group(['middleware' => 'web'], function () {
+
+	Route::get('/userCRUD', [
+		'uses' => 'UserCRUDController@index',
+		'as' => 'userCRUD.index',
+		'middleware' => 'roles',
+		'roles' => ['Admin']
+	]);
+
+    Route::get('/userCRUD/create', [
+        'uses' => 'UserCRUDController@create',
+        'as' => 'userCRUD.create',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+
+    Route::post('/userCRUD/store/', [
+        'uses' => 'UserCRUDController@store',
+        'as' => 'userCRUD.store',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+
+    Route::get('/userCRUD/{id}/', [
+        'uses' => 'UserCRUDController@show',
+        'as' => 'userCRUD.show',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+
+    Route::get('/userCRUD/{id}/edit', [
+        'uses' => 'UserCRUDController@edit',
+        'as' => 'userCRUD.edit',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+
+    Route::post('/userCRUD/{id}/update/', [
+        'uses' => 'UserCRUDController@update',
+        'as' => 'userCRUD.update',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+
+    Route::post('/userCRUD/destroy', [
+        'uses' => 'UserCRUDController@destroy',
+        'as' => 'userCRUD.destroy',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+});

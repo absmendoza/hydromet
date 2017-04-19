@@ -19,10 +19,6 @@ div.material-table .hiddensearch input:active {
   border: transparent 0 !important;
 }
 
-div.material-table table {
-  table-layout: fixed;
-}
-
 div.material-table .table-header {
   height: 64px;
   padding-left: 24px;
