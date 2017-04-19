@@ -12,14 +12,9 @@ use Yajra\Datatables\Datatables;
 */
 
 Route::get('/', function () {
-<<<<<<< HEAD
-   
 
-
-    return view('welcome');//->with('notifs', $notifs);
-=======
     return view('index');
->>>>>>> e15c1cab7200cc1589a8bd7c0c8758163864ad17
+
 });
 
 Auth::routes();

@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder
         $user->firstname = 'Visitor';
         $user->lastname = 'Visitor';
         $user->email = 'visitor@example.com';
-        $user->password = bcrypt('visitorvisitor');
+        $user->password = ('visitorvisitor');
         $user->save();
         $user->roles()->attach($role_user); // attach a role to a user
 
@@ -29,7 +29,7 @@ class UserTableSeeder extends Seeder
         $head->firstname = 'Head';
         $head->lastname = 'Head';
         $head->email = 'head@example.com';
-        $head->password = bcrypt('headhead');
+        $head->password = ('headhead');
         $head->save();
         $head->roles()->attach($role_head); // attach a role to a user
 
@@ -37,7 +37,7 @@ class UserTableSeeder extends Seeder
         $admin->firstname = 'Admin';
         $admin->lastname = 'Admin';
         $admin->email = 'admin@example.com';
-        $admin->password = bcrypt('adminadmin');
+        $admin->password = ('adminadmin');
         $admin->save();
         $admin->roles()->attach($role_admin); // attach a role to a user
     }

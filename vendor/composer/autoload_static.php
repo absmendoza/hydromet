@@ -348,6 +348,8 @@ class ComposerStaticInitdeedcfe86108474f4261dc644b962a87
         'Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'CreateNotificationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_10_083256_create_notifications_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreateReports' => __DIR__ . '/../..' . '/database/migrations/2017_04_19_074336_create_reports.php',
+        'CreateReportsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_19_074411_create_reports_table.php',
         'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_123846_create_roles_table.php',
         'CreateUserRoleTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_124341_create_user_role_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
