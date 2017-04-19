@@ -88,11 +88,6 @@
 	        {!! Form::text('c_position', 'Position',['class'=>'form-control', 'readonly'=>'true']) !!}
 	    </div>
 
-	    <div class="form-group">
-	        {!! Form::text('if_approved', '0',['class'=>'form-control', 'hidden'=>'true']) !!}
-		</div>
-
-
 		<div class="input-field col s12">
           <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Submit
             <i class="mdi-content-send right"></i>

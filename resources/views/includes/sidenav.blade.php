@@ -31,9 +31,10 @@
         <li class="bold"><a href="/" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Home </a></li>
         <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calendar</a>
   <!---------------->
+
         <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
-                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-announcement"></i> Notifications  <span class="new badge">1</span</a>
+                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-announcement"></i> Notifications  <span class="new badge">{{ App\Report::where(['if_approved' => 0])->get()->count() }}</span</a>
                     <div class="collapsible-body">
                         <ul>
                             <li><a href="notifications">Notifications</a></li>

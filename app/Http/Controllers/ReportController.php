@@ -36,7 +36,7 @@ class ReportController extends Controller
       $report->update($reportUpdate);
 
       if($report->if_approved == 1){
-        return redirect('viewPendingReports');//->with('message', 'EDIT');
+        return redirect('viewPendingReports');//->with('message', 'HELLO');
       }
       // return view('x.sample')->with('report', $report);
       else return redirect('success')->with('message', 'EDIT');
