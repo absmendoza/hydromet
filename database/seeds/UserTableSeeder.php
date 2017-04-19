@@ -20,6 +20,7 @@ class UserTableSeeder extends Seeder
         $user = new User();
         $user->firstname = 'User';
         $user->lastname = 'User';
+        $user->employee_id = '201235784';
         $user->email = 'user@example.com';
         $user->password = 'useruser';
         $user->save();
@@ -28,6 +29,7 @@ class UserTableSeeder extends Seeder
         $head = new User();
         $head->firstname = 'Head';
         $head->lastname = 'Head';
+        $user->employee_id = '201235784';
         $head->email = 'head@example.com';
         $head->password = 'headhead';
         $head->save();
@@ -36,6 +38,7 @@ class UserTableSeeder extends Seeder
         $admin = new User();
         $admin->firstname = 'Admin';
         $admin->lastname = 'Admin';
+        $user->employee_id = '201235784';
         $admin->email = 'admin@example.com';
         $admin->password = 'adminadmin';
         $admin->save();
@@ -44,6 +47,7 @@ class UserTableSeeder extends Seeder
         $admin = new User();
         $admin->firstname = 'Admin';
         $admin->lastname = 'Two';
+        $user->employee_id = '201235784';
         $admin->email = 'admin2@example.com';
         $admin->password = 'adminadmin';
         $admin->save();
@@ -52,6 +56,7 @@ class UserTableSeeder extends Seeder
         $user = new User();
         $user->firstname = 'User';
         $user->lastname = 'Two';
+        $user->employee_id = '201235784';
         $user->email = 'user2@example.com';
         $user->password = 'useruser';
         $user->save();
@@ -60,6 +65,7 @@ class UserTableSeeder extends Seeder
         $user = new User();
         $user->firstname = 'User';
         $user->lastname = 'Three';
+        $user->employee_id = '201235784';
         $user->email = 'user3@example.com';
         $user->password = 'useruser';
         $user->save();
@@ -68,6 +74,7 @@ class UserTableSeeder extends Seeder
         $user = new User();
         $user->firstname = 'User';
         $user->lastname = 'Four';
+        $user->employee_id = '201235784';
         $user->email = 'user4@example.com';
         $user->password = 'useruser';
         $user->save();
@@ -76,6 +83,7 @@ class UserTableSeeder extends Seeder
         $user = new User();
         $user->firstname = 'User';
         $user->lastname = 'Five';
+        $user->employee_id = '201235784';
         $user->email = 'user5@example.com';
         $user->password = 'useruser';
         $user->save();
@@ -84,6 +92,7 @@ class UserTableSeeder extends Seeder
         $user = new User();
         $user->firstname = 'User';
         $user->lastname = 'Six';
+        $user->employee_id = '201235784';
         $user->email = 'user6@example.com';
         $user->password = 'useruser';
         $user->save();
@@ -92,6 +101,7 @@ class UserTableSeeder extends Seeder
         $user = new User();
         $user->firstname = 'User';
         $user->lastname = 'Seven';
+        $user->employee_id = '201235784';
         $user->email = 'user7@example.com';
         $user->password = 'useruser';
         $user->save();
@@ -100,6 +110,7 @@ class UserTableSeeder extends Seeder
         $user = new User();
         $user->firstname = 'User';
         $user->lastname = 'Eight';
+        $user->employee_id = '201235784';
         $user->email = 'user8@example.com';
         $user->password = 'useruser';
         $user->save();
@@ -108,6 +119,7 @@ class UserTableSeeder extends Seeder
         $user = new User();
         $user->firstname = 'User';
         $user->lastname = 'Nine';
+        $user->employee_id = '201235784';
         $user->email = 'user9@example.com';
         $user->password = 'useruser';
         $user->save();
@@ -116,6 +128,7 @@ class UserTableSeeder extends Seeder
         $user = new User();
         $user->firstname = 'User';
         $user->lastname = 'Ten';
+        $user->employee_id = '201235784';
         $user->email = 'user10@example.com';
         $user->password = 'useruser';
         $user->save();
@@ -124,6 +137,7 @@ class UserTableSeeder extends Seeder
         $user = new User();
         $user->firstname = 'User';
         $user->lastname = 'Eleven';
+        $user->employee_id = '201235784';
         $user->email = 'user11@example.com';
         $user->password = 'useruser';
         $user->save();
@@ -132,6 +146,7 @@ class UserTableSeeder extends Seeder
         $user = new User();
         $user->firstname = 'User';
         $user->lastname = 'Twelve';
+        $user->employee_id = '201235784';
         $user->email = 'user12@example.com';
         $user->password = 'useruser';
         $user->save();
@@ -140,6 +155,7 @@ class UserTableSeeder extends Seeder
         $user = new User();
         $user->firstname = 'User';
         $user->lastname = 'Thirteen';
+        $user->employee_id = '201235784';
         $user->email = 'user13@example.com';
         $user->password = 'useruser';
         $user->save();
