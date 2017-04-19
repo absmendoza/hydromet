@@ -12,7 +12,10 @@ use Yajra\Datatables\Datatables;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   
+
+
+    return view('welcome');//->with('notifs', $notifs);
 });
 
 Auth::routes();
@@ -24,6 +27,16 @@ Route::get('maintenanceReps', function(){
 	return view('maintenance_reps');
 });
 
+
+Route::get('sample', function () {
+    return view('x.sample');
+});
+
+/* NOTIFS ROUTES*/
+Route::resource('notifications','NotificationController');
+Route::get('viewPendingReports', array('uses'=> 'ReportController@show_pending'));
+
+/* REPORTS ROUTES */
 Route::resource('reports','ReportController');
 Route::get('addMaintenanceReport', array('uses'=> 'MaintenanceController@addRepView'));
 Route::get('viewMaintenanceReports', array('uses'=> 'MaintenanceController@allRepsView'));

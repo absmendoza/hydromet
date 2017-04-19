@@ -1,9 +1,10 @@
 @extends('layouts.app')
-
+ 
 @section('content')
 
+
 <div class="card-panel" style="margin:1.5%; text-align: center;">
-    <h5>APPROVED REPORTS</h5>
+    <h5>PENDING REPORTS</h5>
 </div>
 <div class="card-panel" style="margin:1.5%">
 <table class="table table-striped table-bordered table-hover">
@@ -20,7 +21,7 @@
  <tbody>
  <?php $reports = DB::table('reports')->get(); ?>
  @foreach ($reports as $report)
-     @if ($report->if_approved == '1')
+     @if ($report->if_approved == '0')
      <tr>
          <td>{{ $report->id }}</td>
          <td>{{ $report->station_name }}</td>
@@ -41,7 +42,15 @@
       </div>
       <div class="modal-footer">
         <a href="#" class="waves-effect btn-flat modal-action modal-close">Close</a>
-        
+        {!! Form::model($report,['method' => 'PATCH','route'=>['reports.update',$report->id]]) !!}
+            {!! Form::text('if_approved', '1',['class'=>'form-control', 'hidden'=>'true']) !!}
+            {!! Form::text('n_position', 'Unit Head',['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+			{!! Form::text('noted_by', Auth::user()->name,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+			
+            <button class="waves-effect btn-flat" type="submit" name="action" onclick="Materialize.toast('Report approved', 4000)">Approve
+        </button>
+       <!-- <a href="#" class="waves-effect btn-flat modal-action modal-close">Approve</a>
+        -->{!! Form::close() !!}
       </div>
     </div>  </div>
  @endforeach
@@ -66,4 +75,6 @@
 
       
 </script>
+
+
 @endsection

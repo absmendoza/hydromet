@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 //use Illuminate\Http\Request;
 use Request;
 use App\Report;
+use App\Notification;
 
 
 class ReportController extends Controller
@@ -19,6 +20,7 @@ class ReportController extends Controller
     {
        $report=Request::all();
        Report::create($report);
+       Notification::create($report);
 
        return redirect('success')->with('message', 'ADD');
     }
@@ -33,13 +35,30 @@ class ReportController extends Controller
       $report = Report::find($id);
       $report->update($reportUpdate);
 
-      return redirect('success')->with('message', 'EDIT');
+      if($report->if_approved == 1){
+        return redirect('notifications');//->with('message', 'EDIT');
+      }
+      // return view('x.sample')->with('report', $report);
+      else return redirect('success')->with('message', 'EDIT');
+    
+    }
+
+    public function approve($id){
+      $reportUpdate = Request::all();
+      $report = Report::find($id);
+      $report->update($reportUpdate);
+
+      return redirect('notifications');//->with('message', 'EDIT');
     
     }
 
     public function display_report(){
       $reports = DB::table('reports')->get();
 
+    }
+
+    public function show_pending(){
+      return view('Notifications.pending_reports');
     }
     
 }
