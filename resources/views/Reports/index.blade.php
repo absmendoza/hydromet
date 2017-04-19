@@ -81,7 +81,7 @@
 
 	    <div class="form-group"  style="padding-top:2%">
 	        {!! Form::label('conducted_by', 'Conducted by:') !!}
-			{!! Form::text('conducted_by', Auth::user()->name,['class'=>'form-control', 'readonly'=>'true']) !!}
+			{!! Form::text('conducted_by', Auth::user()->firstname.' '.Auth::user()->lastname,['class'=>'form-control', 'readonly'=>'true']) !!}
 	        {!! Form::label('c_position', 'Position:') !!}
 	        {!! Form::text('c_position', 'Position',['class'=>'form-control', 'readonly'=>'true']) !!}
 	    </div>

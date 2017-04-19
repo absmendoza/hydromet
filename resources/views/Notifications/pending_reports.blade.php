@@ -45,7 +45,7 @@
         {!! Form::model($report,['method' => 'PATCH','route'=>['reports.update',$report->id]]) !!}
             {!! Form::text('if_approved', '1',['class'=>'form-control', 'hidden'=>'true']) !!}
             {!! Form::text('n_position', 'Unit Head',['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
-			{!! Form::text('noted_by', Auth::user()->name,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+			{!! Form::text('noted_by', Auth::user()->firstname.' '.Auth::user()->lastname,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
 			
             <button class="waves-effect btn-flat" type="submit" name="action" onclick="Materialize.toast('Report approved', 4000)">Approve
         </button>
@@ -58,15 +58,13 @@
   
 </table>
 </div>
-    <!-- jQuery Library -->
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>    
-    <!--materialize js-->
-    <script type="text/javascript" src="js/materialize.js"></script>
-    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="js/plugins.js"></script>
-    <!--scrollbar-->
-    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    
+
+<!-- jQuery Library -->
+<script type="text/javascript" src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+
+<!--materialize js-->
+<script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
+
 <script>
       $(document).ready(function(){
         // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered

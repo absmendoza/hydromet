@@ -20,7 +20,7 @@ class ReportController extends Controller
     {
        $report=Request::all();
        Report::create($report);
-       Notification::create($report);
+      // Notification::create($report);
 
        return redirect('success')->with('message', 'ADD');
     }
@@ -36,7 +36,7 @@ class ReportController extends Controller
       $report->update($reportUpdate);
 
       if($report->if_approved == 1){
-        return redirect('notifications');//->with('message', 'EDIT');
+        return redirect('viewPendingReports');//->with('message', 'EDIT');
       }
       // return view('x.sample')->with('report', $report);
       else return redirect('success')->with('message', 'EDIT');

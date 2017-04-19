@@ -83,7 +83,7 @@
 
 	    <div class="form-group"  style="padding-top:2%">
 	        {!! Form::label('conducted_by', 'Conducted by:') !!}
-			{!! Form::text('conducted_by', Auth::user()->name,['class'=>'form-control', 'readonly'=>'true']) !!}
+			{!! Form::text('conducted_by', Auth::user()->firstname.' '.Auth::user()->lastname,['class'=>'form-control', 'readonly'=>'true']) !!}
 	        {!! Form::label('c_position', 'Position:') !!}
 	        {!! Form::text('c_position', 'Position',['class'=>'form-control', 'readonly'=>'true']) !!}
 	    </div>
@@ -91,14 +91,6 @@
 	    <div class="form-group">
 	        {!! Form::text('if_approved', '0',['class'=>'form-control', 'hidden'=>'true']) !!}
 		</div>
-	
-		<?php  $time = Carbon\Carbon::now(new DateTimeZone('Asia/Singapore')); ?>
-		{!! Form::text('sender_id', Auth::user()->id,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
-		{!! Form::text('receiver_id', 2,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
-		{!! Form::text('message', Auth::user()->name . ' added a new report',['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}	
-		{!! Form::text('sent_at_date', $time->toDateString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
-		{!! Form::text('sent_at_time', $time->toTimeString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
-		
 
 
 		<div class="input-field col s12">
@@ -110,15 +102,6 @@
 	</form>	
 </div>
 
-<!-- jQuery Library -->
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>    
-    <!--materialize js-->
-    <script type="text/javascript" src="js/materialize.js"></script>
-    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="js/plugins.js"></script>
-    <!--scrollbar-->
-    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    
 <script>
 	$(document).ready(function() {
 		$('select').material_select();

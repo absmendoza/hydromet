@@ -19,7 +19,7 @@
  <tbody>
  <?php $reports = DB::table('reports')->get(); ?>
  @foreach ($reports as $report)
-     @if(strcmp($report->conducted_by, Auth::user()->name) == 0)
+     @if(strcmp($report->conducted_by, Auth::user()->firstname.' '.Auth::user()->lastname) == 0)
      <tr>
          <td>{{ $report->id }}</td>
          <td>{{ $report->station_name }}</td>
@@ -71,13 +71,10 @@
 </table>
 </div>
 <!-- jQuery Library -->
-<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>    
+<script type="text/javascript" src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+
 <!--materialize js-->
-<script type="text/javascript" src="js/materialize.js"></script>
-<!--plugins.js - Some Specific JS codes for Plugin Settings-->
-<script type="text/javascript" src="js/plugins.js"></script>
-<!--scrollbar-->
-<script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
 
 <script>
         $(document).ready(function(){
