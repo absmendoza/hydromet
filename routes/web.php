@@ -1,5 +1,4 @@
 <?php
-use Yajra\Datatables\Datatables;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,20 +9,14 @@ use Yajra\Datatables\Datatables;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-
     return view('index');
-
 });
-
-Auth::routes();
 
 // localhost:8000/maintenanceReps
 Route::get('maintenanceReps', function(){
 	return view('maintenance_reps');
 });
-
 
 Route::get('sample', function () {
     return view('x.sample');
@@ -32,12 +25,6 @@ Route::get('sample', function () {
 /* NOTIFS ROUTES*/
 Route::resource('notifications','NotificationController');
 Route::get('viewPendingReports', array('uses'=> 'ReportController@show_pending'));
-
-/* REPORTS ROUTES */
-Route::resource('reports','ReportController');
-Route::get('addMaintenanceReport', array('uses'=> 'MaintenanceController@addRepView'));
-Route::get('viewMaintenanceReports', array('uses'=> 'MaintenanceController@allRepsView'));
-Route::get('viewMyMaintenanceReports', array('uses'=> 'MaintenanceController@myRepsView'));
 
 Route::get('success', function(){
     return view('Reports/success');
@@ -52,24 +39,16 @@ Route::get('/users/serverSide', [
     }
 ]);
 
-//Route::resource('userCRUD','UserCRUDController');
-
-/*
-Route::group(['middleware' => 'roles'], function() {
-    Route::resource('/userCRUD', 'UserCRUDController', 
-        [
-		'roles' => 'Visitor'
-        ]);
-});
-*/
-
+// Group of ROUTES w Permissions
 Route::group(['middleware' => 'web'], function () {
+    Route::auth();
 
-	Route::get('/userCRUD', [
+    // User CRUD Modul
+	Route::get('userCRUD', [
 		'uses' => 'UserCRUDController@index',
 		'as' => 'userCRUD.index',
 		'middleware' => 'roles',
-		'roles' => ['Admin']
+		'roles' => ['Admin', 'Head']
 	]);
 
     Route::get('/userCRUD/create', [
@@ -90,7 +69,7 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'UserCRUDController@show',
         'as' => 'userCRUD.show',
         'middleware' => 'roles',
-        'roles' => ['Admin']
+        'roles' => ['Admin', 'Head']
     ]);
 
     Route::get('/userCRUD/{id}/edit', [
@@ -107,10 +86,42 @@ Route::group(['middleware' => 'web'], function () {
         'roles' => ['Admin']
     ]);
 
-    Route::post('/userCRUD/destroy', [
+    Route::delete('/userCRUD/{id}/destroy', [
         'uses' => 'UserCRUDController@destroy',
         'as' => 'userCRUD.destroy',
         'middleware' => 'roles',
         'roles' => ['Admin']
     ]);
+    
+    // Maintenance Report Module
+    Route::get('/viewMyMaintenanceReports', [
+        'uses'=> 'MaintenanceController@myRepsView',
+        'as' => 'viewMyMaintenanceReports',
+        'middleware' => 'roles',
+        'roles' => ['Head', 'User', 'Admin']
+    ]);
+
+    Route::get('/viewMaintenanceReports', [
+        'uses'=> 'MaintenanceController@allRepsView',
+        'as' => 'viewMaintenanceReports',
+        'middleware' => 'roles',
+        'roles' => ['Head', 'User', 'Admin']
+    ]);
+
+    Route::get('/addMaintenanceReport', [
+        'uses'=> 'MaintenanceController@addRepView',
+        'as' => 'addMaintenanceReport',
+        'middleware' => 'roles',
+        'roles' => ['Head', 'User']
+    ]);
+
+    Route::resource('reports','ReportController',
+    [
+        'middleware' => 'roles',
+        'roles' => ['User', 'Head']
+    ]);
+
+    Route::get('success', function(){
+        return view('Reports/success');
+    });
 });
