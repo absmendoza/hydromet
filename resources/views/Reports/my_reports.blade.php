@@ -26,9 +26,13 @@
          <td>{{ $report->location }}</td>
          <td>{{ $report->sensor_type }}</td>
          <td>{{ $report->date_assessed }}</td>
-         <td><a class="waves-effect waves-light btn modal-trigger  light-blue modal-trigger" href="#editReport-<?= $report->id?>">Edit</a></td>
          <td><a class="waves-effect waves-light btn modal-trigger  light-blue modal-trigger" href="#viewReport-<?= $report->id?>">View</a></td>
-     </tr>
+         @if($report->if_approved == 1)
+         <td><a class="waves-effect waves-light btn light-green">Approved</a></td>
+         @else
+         <td><a class="waves-effect waves-light btn modal-trigger  light-blue modal-trigger" href="#editReport-<?= $report->id?>">Edit</a></td>
+         @endif
+         </tr>
      @endif
     <div id="modal-fixed-footer">
         <div id="viewReport-<?= $report->id?>" class="modal modal-fixed-footer">
@@ -50,7 +54,7 @@
                 @include('Reports/edit_report')  
             </div>
             <div class="modal-footer">
-                <button class="waves-effect btn-flat" type="submit" name="action" onclick="Materialize.toast('I am a toast', 4000)">Submit
+                <button class="waves-effect btn-flat" type="submit" name="action">Submit
                 </button>
                 </form>
                 <a href="#" class="waves-effect btn-flat modal-action modal-close">Cancel</a>

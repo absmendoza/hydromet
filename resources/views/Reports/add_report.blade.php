@@ -89,13 +89,18 @@
 	    </div>
 
 	    <div class="form-group">
-	        {!! Form::label('noted_by', 'Noted by:', ['hidden'=>'true']) !!}
-	        <input type="text" name="noted_by" placeholder="Unit Head" value="Unit Head Name" hidden/><br>
-	        {!! Form::label('n_position', 'Position:', ['hidden'=>'true']) !!}
-	        {!! Form::text('n_position', 'Unit Head',['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
-			{!! Form::text('if_approved', '0',['class'=>'form-control', 'hidden'=>'true']) !!}
+	        {!! Form::text('if_approved', '0',['class'=>'form-control', 'hidden'=>'true']) !!}
 		</div>
 	
+		<?php  $time = Carbon\Carbon::now(new DateTimeZone('Asia/Singapore')); ?>
+		{!! Form::text('sender_id', Auth::user()->id,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+		{!! Form::text('receiver_id', 2,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+		{!! Form::text('message', Auth::user()->name . ' added a new report',['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+		{!! Form::text('sent_at_date', $time->toDateString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+		{!! Form::text('sent_at_time', $time->toTimeString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+		
+
+
 		<div class="input-field col s12">
           <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Submit
             <i class="mdi-content-send right"></i>

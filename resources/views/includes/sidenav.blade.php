@@ -31,13 +31,18 @@
         <li class="bold"><a href="/" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Home </a></li>
         <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calendar</a>
   <!---------------->
-  
-        <li class="bold"><a href="#userNotifs" class="waves-effect waves-cyan modal-trigger"><i class="mdi-action-announcement"></i> Notifications <span class="new badge">1</span></a>
-        
-        
-        
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-announcement"></i> Notifications  <span class="new badge">1</span</a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="notifications">Notifications</a></li>
+                            <li><a href="viewPendingReports">Pending Reports</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
         </li>
-  
   
   
   <!---------------->
@@ -88,17 +93,7 @@
     <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only darken-2"><i class="mdi-navigation-menu" ></i></a>
 
 </aside>
-<div id="modal-fixed-footer">
-        <div id="userNotifs" class="modal modal-fixed-footer">
-            <div class="modal-content" align="justify">
-                <div class="modal-header">Notifications</div>
-                
-            </div>
-            <div class="modal-footer">
-                <a href="#" class="waves-effect btn-flat modal-action modal-close">Close</a>
-            </div>
-        </div>
-    </div>
+
 <script>
           $(document).ready(function(){
             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered

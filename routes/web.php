@@ -10,7 +10,14 @@
 |
 */
 Route::get('/', function () {
+<<<<<<< HEAD
+   
+
+
+    return view('welcome');//->with('notifs', $notifs);
+=======
     return view('index');
+>>>>>>> e15c1cab7200cc1589a8bd7c0c8758163864ad17
 });
 
 
@@ -19,6 +26,28 @@ Route::get('maintenanceReps', function(){
 	return view('maintenance_reps');
 });
 
+<<<<<<< HEAD
+=======
+
+Route::get('sample', function () {
+    return view('x.sample');
+});
+
+/* NOTIFS ROUTES*/
+Route::resource('notifications','NotificationController');
+Route::get('viewPendingReports', array('uses'=> 'ReportController@show_pending'));
+
+/* REPORTS ROUTES */
+Route::resource('reports','ReportController');
+Route::get('addMaintenanceReport', array('uses'=> 'MaintenanceController@addRepView'));
+Route::get('viewMaintenanceReports', array('uses'=> 'MaintenanceController@allRepsView'));
+Route::get('viewMyMaintenanceReports', array('uses'=> 'MaintenanceController@myRepsView'));
+
+Route::get('success', function(){
+    return view('Reports/success');
+});
+
+>>>>>>> 52fcff3d34e9ae92f69e4753a82085b21a735956
 Route::get('/users/serverSide', [
     'as'   => 'users.serverSide',
     'uses' => function () {
