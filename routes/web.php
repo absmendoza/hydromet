@@ -13,23 +13,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-// localhost:8000/maintenanceReps
-Route::get('maintenanceReps', function(){
-	return view('maintenance_reps');
-});
-
-Route::get('sample', function () {
-    return view('x.sample');
-});
-
-/* NOTIFS ROUTES*/
-Route::resource('notifications','NotificationController');
-Route::get('viewPendingReports', array('uses'=> 'ReportController@show_pending'));
-
-Route::get('success', function(){
-    return view('Reports/success');
-});
-
 Route::get('/users/serverSide', [
     'as'   => 'users.serverSide',
     'uses' => function () {
@@ -43,7 +26,7 @@ Route::get('/users/serverSide', [
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    // User CRUD Modul
+    // User CRUD Module
 	Route::get('userCRUD', [
 		'uses' => 'UserCRUDController@index',
 		'as' => 'userCRUD.index',
@@ -112,7 +95,7 @@ Route::group(['middleware' => 'web'], function () {
         'uses'=> 'MaintenanceController@addRepView',
         'as' => 'addMaintenanceReport',
         'middleware' => 'roles',
-        'roles' => ['Head', 'User']
+        'roles' => ['Head', 'User', 'Admin']
     ]);
 
     Route::resource('reports','ReportController',
@@ -124,4 +107,14 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('success', function(){
         return view('Reports/success');
     });
+
+    /* NOTIFS ROUTES*/
+    Route::resource('notifications','NotificationController');
+
+    Route::get('viewPendingReports', [
+        'uses'=> 'ReportController@show_pending',
+        'as' => 'viewPendingReports',
+        'middleware' => 'roles',
+        'roles' => ['Head', 'Admin']
+    ]);
 });
