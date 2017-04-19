@@ -10,24 +10,13 @@
 |
 */
 Route::get('/', function () {
-<<<<<<< HEAD
-   
-
-
-    return view('welcome');//->with('notifs', $notifs);
-=======
     return view('index');
->>>>>>> e15c1cab7200cc1589a8bd7c0c8758163864ad17
 });
-
 
 // localhost:8000/maintenanceReps
 Route::get('maintenanceReps', function(){
 	return view('maintenance_reps');
 });
-
-<<<<<<< HEAD
-=======
 
 Route::get('sample', function () {
     return view('x.sample');
@@ -47,7 +36,6 @@ Route::get('success', function(){
     return view('Reports/success');
 });
 
->>>>>>> 52fcff3d34e9ae92f69e4753a82085b21a735956
 Route::get('/users/serverSide', [
     'as'   => 'users.serverSide',
     'uses' => function () {
@@ -59,14 +47,14 @@ Route::get('/users/serverSide', [
 
 // Group of ROUTES w Permissions
 Route::group(['middleware' => 'web'], function () {
- Route::auth();
+    Route::auth();
 
     // User CRUD Modul
 	Route::get('userCRUD', [
 		'uses' => 'UserCRUDController@index',
 		'as' => 'userCRUD.index',
 		'middleware' => 'roles',
-		'roles' => ['Admin']
+		'roles' => ['Admin', 'Head']
 	]);
 
     Route::get('/userCRUD/create', [
@@ -87,7 +75,7 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'UserCRUDController@show',
         'as' => 'userCRUD.show',
         'middleware' => 'roles',
-        'roles' => ['Admin']
+        'roles' => ['Admin', 'Head']
     ]);
 
     Route::get('/userCRUD/{id}/edit', [
@@ -116,7 +104,7 @@ Route::group(['middleware' => 'web'], function () {
         'uses'=> 'MaintenanceController@myRepsView',
         'as' => 'viewMyMaintenanceReports',
         'middleware' => 'roles',
-        'roles' => ['Head', 'User']
+        'roles' => ['Head', 'User', 'Admin']
     ]);
 
     Route::get('/viewMaintenanceReports', [
