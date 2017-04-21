@@ -8,7 +8,9 @@
 <div class="card-panel" style="margin:1.5%">
 	<!-- FIX FORM -->
 	{!! Form::open(['url' => 'reports']) !!}
-		 <div class="form-group">
+		{!! Form::text('emp_id',Auth::user()->employee_id,['class'=>'form-control', 'required' => 'true', 'hidden' =>'true', 'readonly'=>'true']) !!}
+	    
+		<div class="form-group">
 	        {!! Form::label('station_name', 'Station Name:') !!}
 	        {!! Form::text('station_name',null,['class'=>'form-control', 'required' => 'true']) !!}
 	    </div>
@@ -82,12 +84,30 @@
 	    </div><br>
 
 	    <div class="form-group"  style="padding-top:2%">
-	        {!! Form::label('conducted_by', 'Conducted by:') !!}
+	        <!--{!! Form::label('conducted_by', 'Conducted by:') !!}
 			{!! Form::text('conducted_by', Auth::user()->firstname.' '.Auth::user()->lastname,['class'=>'form-control', 'readonly'=>'true']) !!}
-	        {!! Form::label('c_position', 'Position:') !!}
+	        -->
+			{!! Form::text('conducted_by', Auth::user()->employee_id,['class'=>'form-control', 'readonly'=>'true']) !!}
+			{!! Form::label('c_position', 'Position:') !!}
 	        {!! Form::text('c_position', 'Position',['class'=>'form-control', 'readonly'=>'true']) !!}
 	    </div>
 
+		<?php  $time = Carbon\Carbon::now(new DateTimeZone('Asia/Singapore')); ?>
+		<!-- NOTIFICATIONS -->
+		{!! Form::text('sender_id', Auth::user()->employee_id,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+		{!! Form::text('receiver_id', '201229207',['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+		{!! Form::text('message', Auth::user()->employee_id . ' added a new report',['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+		{!! Form::text('sent_at_date', $time->toDateString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+		{!! Form::text('sent_at_time', $time->toTimeString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+		
+		<!-- USER ACTIVITY -->
+		{!! Form::text('employee_id', Auth::user()->employee_id,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+		{!! Form::text('position', Auth::user()->position,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+		{!! Form::text('employee_name', Auth::user()->firstname.' '.Auth::user()->lastname,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+		{!! Form::text('activity', 'Submitted a new maintenance report',['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+		{!! Form::text('sent_at_date', $time->toDateString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+		{!! Form::text('sent_at_time', $time->toTimeString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+		
 		<div class="input-field col s12">
           <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Submit
             <i class="mdi-content-send right"></i>

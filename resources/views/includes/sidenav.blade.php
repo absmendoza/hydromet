@@ -29,24 +29,29 @@
             </div>
         </li>
         <li class="bold"><a href="/" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Home </a></li>
-        <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calendar</a>
-  <!---------------->
-
+        <li class="bold"><a href="calendar" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calendar</a>
         <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
-                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-announcement"></i> Notifications  <span class="new badge">{{ App\Report::where(['if_approved' => 0])->get()->count() }}</span</a>
+                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-announcement"></i> Notifications <span class="new badge">
+                @if(strcmp(Auth::user()->position, 'Administrator') == 0 || strcmp(Auth::user()->position, 'Unit Head') == 0)
+                    {{ App\Report::where(['if_approved' => 0])->get()->count() + App\Notification::where(['is_read' => 0, 'receiver_id' => Auth::user()->employee_id ])->get()->count()  }}
+                @else
+                    {{ App\Notification::where(['is_read' => 0, 'receiver_id' => Auth::user()->employee_id ])->get()->count() }}
+                @endif
+                </span></a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="notifications">Notifications</a></li>
-                            <li><a href="viewPendingReports">Pending Reports</a></li>
+                            <li><a href="notifications">Notifications <span class="new badge">
+                            {{ App\Notification::where(['is_read' => 0, 'receiver_id' => Auth::user()->employee_id ])->get()->count() }}
+                            </span></a></li>
+                           @if(strcmp(Auth::user()->position, 'Administrator') == 0 || strcmp(Auth::user()->position, 'Unit Head') == 0)
+                            <li><a href="viewPendingReports">Pending Reports <span class="new badge">{{ App\Report::where(['if_approved' => 0])->get()->count() }}</span></a></li>
+                            @endif
                         </ul>
                     </div>
                 </li>
             </ul>
         </li>
-  
-  
-  <!---------------->
         <li class="bold"><a class="waves-effect waves-cyan"><i class="mdi-editor-insert-chart"></i> Sensor Statistics</a>
         </li>
         <li class="no-padding">
@@ -62,12 +67,14 @@
                 </li>
             </ul>
         </li>
+        @if(strcmp(Auth::user()->position, 'Administrator') == 0)
         <li class="bold"><a class="waves-effect waves-cyan" href="userCRUD"><i class="mdi-action-account-box"></i>Users</a>
-        </li>
+        </li>@endif
         <li class="li-hover"><div class="divider"></div></li>
         <li class="li-hover"><p class="ultra-small margin more-text">MORE</p></li>
-        <li><a class="waves-effect waves-cyan" href="#"><i class="#"></i> User Activity</a>
-        </li>
+        @if(strcmp(Auth::user()->position, 'Administrator') == 0)
+        <li><a class="waves-effect waves-cyan" href="user_activity"><i class="#"></i> User Activity</a>
+        </li>@endif
         <li><a class="waves-effect waves-cyan" href="#"><i class="#"></i> Help</a>
         </li>
         @else
@@ -81,12 +88,9 @@
                         <a class="btn-flat waves-effect waves-light white-text profile-btn" href="/login">Login<i class="mdi-action-input right"></i></a>
                         <p class="user-roal">Guest</p>
                     </div>
-
                 </div>
-            </li>
-                        
+            </li>         
         </li>
-        
         @endif
     </ul>
     @endif
@@ -94,21 +98,3 @@
     <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only darken-2"><i class="mdi-navigation-menu" ></i></a>
 
 </aside>
-
-<script>
-          $(document).ready(function(){
-            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-            $('.modal-trigger').leanModal();
-          });
-
-          $user = User::find(Auth::user()->id);
-          $user->newNotification()
-            ->withType('RecipeFavorited')
-            ->withSubject('Your recipe has been favorited.')
-            ->withBody('<User X> has favorited your Caramel Cream Cakes recipe!')
-            ->regarding($recipe)
-            ->deliver();
-            
-          $unreadNotifications = $user->notifications()->unread()->get();
-
-</script>

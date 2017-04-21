@@ -32,38 +32,22 @@
      </tr>
      @endif
      <div id="modal-fixed-footer">
-    <div id="viewReport-<?= $report->id?>" class="modal modal-fixed-footer">
-      <div class="modal-content" align="justify">
-        <div class="modal-header">
-        
+        <div id="viewReport-<?= $report->id?>" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <div class="modal-header">
+            
+                </div>
+                @include('Reports/display_report')
+            </div>
+        <div class="modal-footer">
+            <a href="#" class="waves-effect btn-flat modal-action modal-close">Close</a>
         </div>
-        @include('Reports/display_report')
-      </div>
-      <div class="modal-footer">
-        <a href="#" class="waves-effect btn-flat modal-action modal-close">Close</a>
-        
-      </div>
-    </div>  </div>
+        </div>
+    </div>
  @endforeach
  </tbody>
   
 </table>
 </div>
-    <!-- jQuery Library -->
-    <script type="text/javascript" src="js/jquery-jquery-3.2.1.min.js"></script>    
-    <!--materialize js-->
-    <script type="text/javascript" src="js/materialize.js"></script>
-    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="js/plugins.js"></script>
-    <!--scrollbar-->
-    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    
-<script>
-      $(document).ready(function(){
-        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-        $('.modal-trigger').leanModal();
-      });
 
-      
-</script>
 @endsection

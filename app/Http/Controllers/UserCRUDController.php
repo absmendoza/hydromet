@@ -7,6 +7,7 @@ use App\User;
 use App\Role;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\UserActivity;
 
 class UserCRUDController extends Controller
 {
@@ -49,6 +50,7 @@ class UserCRUDController extends Controller
         ]);
 
         User::create($request->all());
+        UserActivity::create($request->all());
         return redirect()->route('userCRUD.index')
                          ->with('success','User created successfully');
     }
@@ -107,6 +109,7 @@ class UserCRUDController extends Controller
         }
 
         User::find($id)->update($request->all());
+        UserActivity::create($request->all());
         return redirect()->route('userCRUD.index')
                         ->with('success','User updated successfully');
     }
@@ -117,9 +120,10 @@ class UserCRUDController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         User::find($id)->delete();
+        UserActivity::create($request->all());
         return redirect()->route('userCRUD.index')
                         ->with('success','User deleted successfully');
     }

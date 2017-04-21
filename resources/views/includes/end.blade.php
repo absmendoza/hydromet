@@ -22,15 +22,20 @@ Scripts
 <!--plugins.js - Some Specific JS codes for Plugin Settings-->
 <script type="text/javascript" src="{{ asset('js/plugins.js') }}"></script>
 
+<!-- Calendar Script -->
+    <script type="text/javascript" src="{{ asset('js/plugins/fullcalendar/lib/jquery-ui.custom.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/fullcalendar/lib/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/fullcalendar/js/fullcalendar.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/fullcalendar/fullcalendar-script.js') }}"></script>
+
+
 <script>
 $(document).ready(function() {
     $('#datatable').DataTable();
 
-    $('#change_pw').hide();
-    $('#pw_btn').on('click', function (event) {
-        $('#pw_btn').hide();
-        $('#change_pw').show();
-    });
-    
+
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+    $('select').material_select();
 });
 </script>

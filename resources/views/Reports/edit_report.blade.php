@@ -76,7 +76,7 @@
 
     <div class="form-group"  style="padding-top:2%">
         {!! Form::label('conducted_by', 'Conducted by:') !!}
-        {!! Form::text('conducted_by', Auth::user()->firstname.' '.Auth::user()->lastname,['class'=>'form-control', 'readonly'=>'true']) !!}
+        {!! Form::text('conducted_by', Auth::user()->employee_id,['class'=>'form-control', 'readonly'=>'true']) !!}
         {!! Form::label('c_position', 'Position:') !!}
         {!! Form::text('c_position', 'Position',['class'=>'form-control', 'readonly'=>'true']) !!}
     </div>
@@ -89,7 +89,25 @@
         {!! Form::text('if_approved', '0',['class'=>'form-control', 'hidden'=>'true']) !!}
     </div>
     <br><br>
-    <script>
+
+    <?php  $time = Carbon\Carbon::now(new DateTimeZone('Asia/Singapore')); ?>
+    <!-- NOTIFICATIONS -->
+		{!! Form::text('sender_id', Auth::user()->employee_id,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+		{!! Form::text('receiver_id', '201229207',['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+		{!! Form::text('message', Auth::user()->employee_id . ' added a new report',['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+		{!! Form::text('sent_at_date', $time->toDateString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+		{!! Form::text('sent_at_time', $time->toTimeString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+		
+    <!-- USER ACTIVITY -->
+		{!! Form::text('employee_id', Auth::user()->employee_id,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+		{!! Form::text('position', Auth::user()->position,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+		{!! Form::text('employee_name', Auth::user()->firstname.' '.Auth::user()->lastname,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+		{!! Form::text('activity', 'Edited a maintenance report',['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+		{!! Form::text('sent_at_date', $time->toDateString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+		{!! Form::text('sent_at_time', $time->toTimeString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+		
+
+  <!--  <script>
     $(document).ready(function() {
         $('select').material_select();
         
@@ -106,4 +124,4 @@
 		
     });
 
-    </script>
+    </script>-->

@@ -55,7 +55,7 @@ Route::group(['middleware' => 'web'], function () {
         'roles' => ['Admin', 'Head']
     ]);
 
-    Route::get('/userCRUD/{id}/edit', [
+    Route::get('userCRUD/{id}/edit', [
         'uses' => 'UserCRUDController@edit',
         'as' => 'userCRUD.edit',
         'middleware' => 'roles',
@@ -116,5 +116,20 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'viewPendingReports',
         'middleware' => 'roles',
         'roles' => ['Head', 'Admin']
+    ]);
+
+
+    /* User Activity */
+    Route::resource('user_activity','UserActivityController',
+    [
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+    ]);
+
+    /* Calendar */
+    Route::resource('calendar','CalendarController',
+    [
+        'middleware' => 'roles',
+        'roles' => ['Admin', 'Head', 'User']
     ]);
 });

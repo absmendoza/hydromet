@@ -31,12 +31,12 @@
         center: 'title',
         right: 'month,basicWeek,basicDay'
       },
-      defaultDate: '2015-05-12',
+      defaultDate: '2017-04-21',
       editable: true,
       droppable: true, // this allows things to be dropped onto the calendar
       eventLimit: true, // allow "more" link when too many events
       events: [
-        {
+       /* {
           title: 'All Day Event',
           start: '2015-05-01',
           color: '#9c27b0'
@@ -95,7 +95,7 @@
           title: 'Birthday Party',
           start: '2015-05-13T07:00:00',
           color: '#00bcd4'
-        }
+        }*/
       ]
     });
     

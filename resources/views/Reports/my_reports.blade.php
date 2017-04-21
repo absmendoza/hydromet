@@ -19,7 +19,7 @@
  <tbody>
  <?php $reports = DB::table('reports')->get(); ?>
  @foreach ($reports as $report)
-     @if(strcmp($report->conducted_by, Auth::user()->firstname.' '.Auth::user()->lastname) == 0)
+     @if(strcmp($report->conducted_by, Auth::user()->employee_id) == 0)
      <tr>
          <td>{{ $report->id }}</td>
          <td>{{ $report->station_name }}</td>
@@ -36,7 +36,7 @@
      @endif
     <div id="modal-fixed-footer">
         <div id="viewReport-<?= $report->id?>" class="modal modal-fixed-footer">
-            <div class="modal-content" align="justify">
+            <div class="modal-content">
                 <div class="modal-header"></div>
                 @include('Reports/display_report')
             </div>
@@ -48,7 +48,7 @@
 
     <div id="modal-fixed-footer">
         <div id="editReport-<?= $report->id?>" class="modal modal-fixed-footer">
-            <div class="modal-content" align="justify">
+            <div class="modal-content">
                 <div class="modal-header"></div>
                 {!! Form::model($report,['method' => 'PATCH','route'=>['reports.update',$report->id]]) !!}
                 @include('Reports/edit_report')  
@@ -70,18 +70,5 @@
   
 </table>
 </div>
-<!-- jQuery Library -->
-<script type="text/javascript" src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
-
-<!--materialize js-->
-<script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
-
-<script>
-        $(document).ready(function(){
-        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-            $('.modal-trigger').leanModal();
-        });
-
-</script>
 
 @endsection

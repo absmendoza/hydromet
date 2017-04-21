@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Report extends Model
 {
     protected $fillable=[
+    'emp_id',
     'station_name',
     'location',
     'sensor_type',

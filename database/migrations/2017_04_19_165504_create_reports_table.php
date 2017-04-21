@@ -17,6 +17,7 @@ class CreateReportsTable extends Migration
         Schema::create('reports', function(Blueprint $table)
         {
             $table->increments('id');
+            $table->string('emp_id');
             $table->string('station_name');
             $table->string('location');             
             $table->string('sensor_type');

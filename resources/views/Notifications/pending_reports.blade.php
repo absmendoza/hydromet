@@ -45,34 +45,38 @@
         {!! Form::model($report,['method' => 'PATCH','route'=>['reports.update',$report->id]]) !!}
             {!! Form::text('if_approved', '1',['class'=>'form-control', 'hidden'=>'true']) !!}
             {!! Form::text('n_position', 'Unit Head',['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
-			{!! Form::text('noted_by', Auth::user()->firstname.' '.Auth::user()->lastname,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+			{!! Form::text('noted_by', Auth::user()->employee_id,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
 			
+            <!--{!! Form::text('noted_by', Auth::user()->firstname.' '.Auth::user()->lastname,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+			-->
+
+            <?php  $time = Carbon\Carbon::now(new DateTimeZone('Asia/Singapore')); ?>
+            {!! Form::text('sender_id', Auth::user()->employee_id,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+            {!! Form::text('receiver_id', $report->conducted_by,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+            {!! Form::text('message', Auth::user()->employee_id . ' approved your report',['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+            {!! Form::text('sent_at_date', $time->toDateString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+            {!! Form::text('sent_at_time', $time->toTimeString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+            
+            <!-- USER ACTIVITY -->
+            {!! Form::text('employee_id', Auth::user()->employee_id,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+            {!! Form::text('position', Auth::user()->position,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+            {!! Form::text('employee_name', Auth::user()->firstname.' '.Auth::user()->lastname,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+            {!! Form::text('activity', 'Approved a maintenance report submitted by '.$report->conducted_by,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+            {!! Form::text('sent_at_date', $time->toDateString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+            {!! Form::text('sent_at_time', $time->toTimeString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+            
+
+
             <button class="waves-effect btn-flat" type="submit" name="action" onclick="Materialize.toast('Report approved', 4000)">Approve
         </button>
        <!-- <a href="#" class="waves-effect btn-flat modal-action modal-close">Approve</a>
         -->{!! Form::close() !!}
       </div>
-    </div>  </div>
+    </div></div>
  @endforeach
  </tbody>
   
 </table>
 </div>
-
-<!-- jQuery Library -->
-<script type="text/javascript" src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
-
-<!--materialize js-->
-<script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
-
-<script>
-      $(document).ready(function(){
-        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-        $('.modal-trigger').leanModal();
-      });
-
-      
-</script>
-
 
 @endsection

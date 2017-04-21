@@ -8,8 +8,6 @@
 		Regional Office No. IV-A <br>
 		Timugan, Los Banos, Laguna
 	</p>
-	<link rel="stylesheet" href="dist/material-datetime-picker.css">
-	<script src="dist/material-datetime-picker.js"></script>
 </head>
 <body>
 <div>
@@ -93,34 +91,7 @@
 	    </div>
         <br><br>
 
-
-<!--	<button class="c-btn c-datepicker-btn">
-			  <span class="material-icon">Click me</span>
-			</button>
-			<pre id="output"></pre>-->
 </div>
-	<script>
-		$(document).ready(function() {
-	    $('select').material_select();
-	});
-	</script>
-
-  <script src="dist/material-datetime-picker.js" charset="utf-8"></script>
-
-<!--  <script>
-
-    const picker = new MaterialDatePicker({})
-      .on('submit', (d) => {
-        output.innerText = d;
-      });
-
-    const el = document.querySelector('.c-datepicker-btn');
-    el.addEventListener('click', () => {
-      picker.open();
-    }, false);
-
-</script>-->
-
 
 </body>
 </html>

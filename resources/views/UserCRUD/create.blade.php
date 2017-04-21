@@ -1,16 +1,9 @@
-@extends('layouts.app')
-
-@section('content')
-
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><h4>Register</h4></div>
-                <hr>
-                <div class="panel-body">
-                    {!! Form::open(array('route' => 'userCRUD.store','method'=>'POST', 'class' => 'form-horizontal')) !!}
-                    {{ csrf_field() }}
+                <div class="panel-heading"><h4>Create User</h4></div>
+                    <div class="panel-body">
                         <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
                             <label for="firstname" class="col-md-4 control-label">First Name</label>
 
@@ -34,6 +27,20 @@
                                 @if ($errors->has('lastname'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('lastname') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('employee_id') ? ' has-error' : '' }}">
+                            <label for="employee_id" class="col-md-4 control-label">Employee ID</label>
+                            
+                            <div class="col-md-6">
+                                <input id="employee_id" type="text" class="form-control" name="employee_id" required>
+
+                                @if ($errors->has('employee_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('employee_id') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -67,43 +74,18 @@
                             </div>
                         </div>
                     <div class="row">
-<!--
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <label for="name" class="col-md-4 control-label">Name</label>
-                                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Username:</strong>
-                                {!! Form::text('username', null, array('placeholder' => 'Username','class' => 'form-control')) !!}
-                            </div>
-                        </div>
 
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Email:</strong>
-                                {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Password:</strong>
-                                {!! Form::text('password', null, array('placeholder' => 'Password','class' => 'form-control')) !!}
-                            </div>
-                        </div>
--->
-
-                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                <a class="btn btn-primary" href="{{ route('userCRUD.index') }}"> Back</a>
-                        </div>
-                    {!! Form::close() !!}
+                        <!-- USER ACTIVITY -->
+                        <?php  $time = Carbon\Carbon::now(new DateTimeZone('Asia/Singapore')); ?>
+                        {!! Form::text('employee_id', Auth::user()->employee_id,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+                        {!! Form::text('position', Auth::user()->position,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+                        {!! Form::text('employee_name', Auth::user()->firstname.' '.Auth::user()->lastname,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+                        {!! Form::text('activity', 'Created a new employee account',['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+                        {!! Form::text('sent_at_date', $time->toDateString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+                        {!! Form::text('sent_at_time', $time->toTimeString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+                    </div>   
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection

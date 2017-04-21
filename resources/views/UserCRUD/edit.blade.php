@@ -1,15 +1,13 @@
-@extends('layouts.app')
- 
-@section('content')
-
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h1>Edit User</h1>
+                 <h5>EDIT: {{ $user->firstname }} {{$user->lastname }}</h5>
+                 {{ $user->employee_id }}
             </div>
         </div>
     </div>
-
+    <div class="divider"></div>
+    <br>
     @if (count($errors) > 0)
         <div class="alert alert-danger">
             <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -21,22 +19,8 @@
         </div>
     @endif
 
-    {!! Form::model($user, ['method' => 'POST','route' => ['userCRUD.update', $user->id]]) !!}
+    
     <div class="row">
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name:</strong>
-                {!! Form::text('name', null, array('placeholder' => $user->firstname,'class' => 'form-control', 'disabled' => 'disabled')) !!}
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Employee ID:</strong>
-                {!! Form::text('employee_id', $user->employee_id, array('placeholder' => 'Employee ID','class' => 'form-control', 'disabled' => 'disabled')) !!}
-            </div>
-        </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -70,14 +54,25 @@
             </div>
         </div><br>
 
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('userCRUD.index') }}"> Back</a>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
+
+        <!-- USER ACTIVITY -->
+        <?php  $time = Carbon\Carbon::now(new DateTimeZone('Asia/Singapore')); ?>
+        {!! Form::text('employee_id', Auth::user()->employee_id,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+        {!! Form::text('position', Auth::user()->position,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+        {!! Form::text('employee_name', Auth::user()->firstname.' '.Auth::user()->lastname,['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}
+        {!! Form::text('activity', 'Edited '.$user->firstname.' '.$user->lastname."'s (".$user->employee_id.') profile',
+                        ['class'=>'form-control', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+        {!! Form::text('sent_at_date', $time->toDateString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
+        {!! Form::text('sent_at_time', $time->toTimeString(),['class'=>'form-control datepicker', 'readonly'=>'true', 'hidden'=>'true']) !!}	
 
     </div>
-    {!! Form::close() !!}
 
-@endsection
+<script>
+    $(document).ready(function() {
+        $('#change_pw').hide();
+        $('#pw_btn').on('click', function (event) {
+            $('#pw_btn').hide();
+            $('#change_pw').show();
+        });
+    });
+</script>
